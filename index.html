@@ -32,9 +32,9 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/NANUMAGA_1mCONT_TGZ_2.js"></script>
-        <script src="data/SitePhotos_3.js"></script>
-        <script src="data/BTBalignment_DD_4.js"></script>
+        <script src="data/NANUMAGA_1mCONT_TGZ15m_1.js"></script>
+        <script src="data/SitePhotos_2.js"></script>
+        <script src="data/BTBalignment_DD_3.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -53,7 +53,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[-6.288333954781484,176.31256801051157],[-6.2823883691052975,176.3197851213862]]);
+        })
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -72,6 +72,10 @@
         .className += ' fas fa-ruler';
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
+            if (bounds_group.getLayers().length) {
+                map.fitBounds(bounds_group.getBounds());
+            }
+            map.setMaxBounds(map.getBounds());
         }
         map.createPane('pane_NGA_reduced_1m_0');
         map.getPane('pane_NGA_reduced_1m_0').style.zIndex = 400;
@@ -82,16 +86,7 @@
                                               {pane: 'pane_NGA_reduced_1m_0'});
         bounds_group.addLayer(layer_NGA_reduced_1m_0);
         map.addLayer(layer_NGA_reduced_1m_0);
-        map.createPane('pane_TCAPfootprint_1');
-        map.getPane('pane_TCAPfootprint_1').style.zIndex = 401;
-        var img_TCAPfootprint_1 = 'data/TCAPfootprint_1.png';
-        var img_bounds_TCAPfootprint_1 = [[-6.290713695880352,176.3134751497889],[-6.283566251648818,176.31588806027392]];
-        var layer_TCAPfootprint_1 = new L.imageOverlay(img_TCAPfootprint_1,
-                                              img_bounds_TCAPfootprint_1,
-                                              {pane: 'pane_TCAPfootprint_1'});
-        bounds_group.addLayer(layer_TCAPfootprint_1);
-        map.addLayer(layer_TCAPfootprint_1);
-        function pop_NANUMAGA_1mCONT_TGZ_2(feature, layer) {
+        function pop_NANUMAGA_1mCONT_TGZ15m_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -112,34 +107,34 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_NANUMAGA_1mCONT_TGZ_2_0() {
+        function style_NANUMAGA_1mCONT_TGZ15m_1_0() {
             return {
-                pane: 'pane_NANUMAGA_1mCONT_TGZ_2',
+                pane: 'pane_NANUMAGA_1mCONT_TGZ15m_1',
                 opacity: 1,
-                color: 'rgba(0,0,0,1.0)',
+                color: 'rgba(12,4,7,1.0)',
                 dashArray: '',
                 lineCap: 'square',
                 lineJoin: 'bevel',
                 weight: 1.0,
                 fillOpacity: 0,
-                interactive: false,
+                interactive: true,
             }
         }
-        map.createPane('pane_NANUMAGA_1mCONT_TGZ_2');
-        map.getPane('pane_NANUMAGA_1mCONT_TGZ_2').style.zIndex = 402;
-        map.getPane('pane_NANUMAGA_1mCONT_TGZ_2').style['mix-blend-mode'] = 'normal';
-        var layer_NANUMAGA_1mCONT_TGZ_2 = new L.geoJson(json_NANUMAGA_1mCONT_TGZ_2, {
+        map.createPane('pane_NANUMAGA_1mCONT_TGZ15m_1');
+        map.getPane('pane_NANUMAGA_1mCONT_TGZ15m_1').style.zIndex = 401;
+        map.getPane('pane_NANUMAGA_1mCONT_TGZ15m_1').style['mix-blend-mode'] = 'normal';
+        var layer_NANUMAGA_1mCONT_TGZ15m_1 = new L.geoJson(json_NANUMAGA_1mCONT_TGZ15m_1, {
             attribution: '',
-            interactive: false,
-            dataVar: 'json_NANUMAGA_1mCONT_TGZ_2',
-            layerName: 'layer_NANUMAGA_1mCONT_TGZ_2',
-            pane: 'pane_NANUMAGA_1mCONT_TGZ_2',
-            onEachFeature: pop_NANUMAGA_1mCONT_TGZ_2,
-            style: style_NANUMAGA_1mCONT_TGZ_2_0,
+            interactive: true,
+            dataVar: 'json_NANUMAGA_1mCONT_TGZ15m_1',
+            layerName: 'layer_NANUMAGA_1mCONT_TGZ15m_1',
+            pane: 'pane_NANUMAGA_1mCONT_TGZ15m_1',
+            onEachFeature: pop_NANUMAGA_1mCONT_TGZ15m_1,
+            style: style_NANUMAGA_1mCONT_TGZ15m_1_0,
         });
-        bounds_group.addLayer(layer_NANUMAGA_1mCONT_TGZ_2);
-        map.addLayer(layer_NANUMAGA_1mCONT_TGZ_2);
-        function pop_SitePhotos_3(feature, layer) {
+        bounds_group.addLayer(layer_NANUMAGA_1mCONT_TGZ15m_1);
+        map.addLayer(layer_NANUMAGA_1mCONT_TGZ15m_1);
+        function pop_SitePhotos_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -168,9 +163,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_SitePhotos_3_0() {
+        function style_SitePhotos_2_0() {
             return {
-                pane: 'pane_SitePhotos_3',
+                pane: 'pane_SitePhotos_2',
                 radius: 6.0,
                 opacity: 1,
                 color: 'rgba(250,7,44,1.0)',
@@ -184,9 +179,9 @@
                 interactive: true,
             }
         }
-        function style_SitePhotos_3_1() {
+        function style_SitePhotos_2_1() {
             return {
-                pane: 'pane_SitePhotos_3',
+                pane: 'pane_SitePhotos_2',
                 radius: 1.5,
                 opacity: 1,
                 color: 'rgba(250,176,124,1.0)',
@@ -200,33 +195,33 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_SitePhotos_3');
-        map.getPane('pane_SitePhotos_3').style.zIndex = 403;
-        map.getPane('pane_SitePhotos_3').style['mix-blend-mode'] = 'normal';
-        var layer_SitePhotos_3 = new L.geoJson.multiStyle(json_SitePhotos_3, {
+        map.createPane('pane_SitePhotos_2');
+        map.getPane('pane_SitePhotos_2').style.zIndex = 402;
+        map.getPane('pane_SitePhotos_2').style['mix-blend-mode'] = 'normal';
+        var layer_SitePhotos_2 = new L.geoJson.multiStyle(json_SitePhotos_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_SitePhotos_3',
-            layerName: 'layer_SitePhotos_3',
-            pane: 'pane_SitePhotos_3',
-            onEachFeature: pop_SitePhotos_3,
+            dataVar: 'json_SitePhotos_2',
+            layerName: 'layer_SitePhotos_2',
+            pane: 'pane_SitePhotos_2',
+            onEachFeature: pop_SitePhotos_2,
             pointToLayers: [function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.shapeMarker(latlng, style_SitePhotos_3_0(feature));
+                return L.shapeMarker(latlng, style_SitePhotos_2_0(feature));
             },function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.shapeMarker(latlng, style_SitePhotos_3_1(feature));
+                return L.shapeMarker(latlng, style_SitePhotos_2_1(feature));
             },
         ]});
-        bounds_group.addLayer(layer_SitePhotos_3);
-        map.addLayer(layer_SitePhotos_3);
-        function pop_BTBalignment_DD_4(feature, layer) {
+        bounds_group.addLayer(layer_SitePhotos_2);
+        map.addLayer(layer_SitePhotos_2);
+        function pop_BTBalignment_DD_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -243,9 +238,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_BTBalignment_DD_4_0() {
+        function style_BTBalignment_DD_3_0() {
             return {
-                pane: 'pane_BTBalignment_DD_4',
+                pane: 'pane_BTBalignment_DD_3',
                 opacity: 1,
                 color: 'rgba(232,255,23,1.0)',
                 dashArray: '',
@@ -256,30 +251,30 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_BTBalignment_DD_4');
-        map.getPane('pane_BTBalignment_DD_4').style.zIndex = 404;
-        map.getPane('pane_BTBalignment_DD_4').style['mix-blend-mode'] = 'normal';
-        var layer_BTBalignment_DD_4 = new L.geoJson(json_BTBalignment_DD_4, {
+        map.createPane('pane_BTBalignment_DD_3');
+        map.getPane('pane_BTBalignment_DD_3').style.zIndex = 403;
+        map.getPane('pane_BTBalignment_DD_3').style['mix-blend-mode'] = 'normal';
+        var layer_BTBalignment_DD_3 = new L.geoJson(json_BTBalignment_DD_3, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_BTBalignment_DD_4',
-            layerName: 'layer_BTBalignment_DD_4',
-            pane: 'pane_BTBalignment_DD_4',
-            onEachFeature: pop_BTBalignment_DD_4,
-            style: style_BTBalignment_DD_4_0,
+            dataVar: 'json_BTBalignment_DD_3',
+            layerName: 'layer_BTBalignment_DD_3',
+            pane: 'pane_BTBalignment_DD_3',
+            onEachFeature: pop_BTBalignment_DD_3,
+            style: style_BTBalignment_DD_3_0,
         });
-        bounds_group.addLayer(layer_BTBalignment_DD_4);
-        map.addLayer(layer_BTBalignment_DD_4);
+        bounds_group.addLayer(layer_BTBalignment_DD_3);
+        map.addLayer(layer_BTBalignment_DD_3);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/BTBalignment_DD_4.png" /> BTBalignment_DD': layer_BTBalignment_DD_4,'<img src="legend/SitePhotos_3.png" /> SitePhotos': layer_SitePhotos_3,'<img src="legend/NANUMAGA_1mCONT_TGZ_2.png" /> NANUMAGA_1mCONT_TGZ': layer_NANUMAGA_1mCONT_TGZ_2,"TCAPfootprint": layer_TCAPfootprint_1,"NGA_reduced_1m": layer_NGA_reduced_1m_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/BTBalignment_DD_3.png" /> BTBalignment_DD': layer_BTBalignment_DD_3,'<img src="legend/SitePhotos_2.png" /> SitePhotos': layer_SitePhotos_2,'<img src="legend/NANUMAGA_1mCONT_TGZ15m_1.png" /> NANUMAGA_1mCONT_TGZ+15m': layer_NANUMAGA_1mCONT_TGZ15m_1,"NGA_reduced_1m": layer_NGA_reduced_1m_0,},{collapsed:false}).addTo(map);
         setBounds();
         var i = 0;
-        layer_NANUMAGA_1mCONT_TGZ_2.eachLayer(function(layer) {
+        layer_NANUMAGA_1mCONT_TGZ15m_1.eachLayer(function(layer) {
             var context = {
                 feature: layer.feature,
                 variables: {}
             };
-            layer.bindTooltip((layer.feature.properties['ELEV'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['ELEV']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_NANUMAGA_1mCONT_TGZ_2'});
+            layer.bindTooltip((layer.feature.properties['ELEV'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['ELEV']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_NANUMAGA_1mCONT_TGZ15m_1'});
             labels.push(layer);
             totalMarkers += 1;
               layer.added = true;
@@ -291,15 +286,15 @@
                 return this._bounds;
             }
         });
-        resetLabels([layer_NANUMAGA_1mCONT_TGZ_2]);
+        resetLabels([layer_NANUMAGA_1mCONT_TGZ15m_1]);
         map.on("zoomend", function(){
-            resetLabels([layer_NANUMAGA_1mCONT_TGZ_2]);
+            resetLabels([layer_NANUMAGA_1mCONT_TGZ15m_1]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_NANUMAGA_1mCONT_TGZ_2]);
+            resetLabels([layer_NANUMAGA_1mCONT_TGZ15m_1]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_NANUMAGA_1mCONT_TGZ_2]);
+            resetLabels([layer_NANUMAGA_1mCONT_TGZ15m_1]);
         });
         </script>
     </body>
