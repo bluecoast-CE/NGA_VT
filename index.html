@@ -31,8 +31,8 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/BTBalignment_DD_1.js"></script>
-        <script src="data/SitePhotos_2.js"></script>
+        <script src="data/BTBAlignment_1.js"></script>
+        <script src="data/SitePhotosMarch2021_2.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -53,7 +53,7 @@
             zoomControl:true, maxZoom:28, minZoom:1
         })
         var hash = new L.Hash(map);
-        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        map.attributionControl.setPrefix('<a href="https://www.tcap.tv"><img src="images/TCAP.png" height="150px" width="150px"></a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
         var measureControl = new L.Control.Measure({
@@ -73,18 +73,17 @@
             if (bounds_group.getLayers().length) {
                 map.fitBounds(bounds_group.getBounds());
             }
-            map.setMaxBounds(map.getBounds());
         }
-        map.createPane('pane_NGA_reduced_15m_0');
-        map.getPane('pane_NGA_reduced_15m_0').style.zIndex = 400;
-        var img_NGA_reduced_15m_0 = 'data/NGA_reduced_15m_0.png';
-        var img_bounds_NGA_reduced_15m_0 = [[-6.306371225470192,176.31080692510088],[-6.266713184562838,176.32993290354673]];
-        var layer_NGA_reduced_15m_0 = new L.imageOverlay(img_NGA_reduced_15m_0,
-                                              img_bounds_NGA_reduced_15m_0,
-                                              {pane: 'pane_NGA_reduced_15m_0'});
-        bounds_group.addLayer(layer_NGA_reduced_15m_0);
-        map.addLayer(layer_NGA_reduced_15m_0);
-        function pop_BTBalignment_DD_1(feature, layer) {
+        map.createPane('pane_OrthophotoAugust2019_0');
+        map.getPane('pane_OrthophotoAugust2019_0').style.zIndex = 400;
+        var img_OrthophotoAugust2019_0 = 'data/OrthophotoAugust2019_0.png';
+        var img_bounds_OrthophotoAugust2019_0 = [[-6.306371225470192,176.31080692510088],[-6.266713184562838,176.32993290354673]];
+        var layer_OrthophotoAugust2019_0 = new L.imageOverlay(img_OrthophotoAugust2019_0,
+                                              img_bounds_OrthophotoAugust2019_0,
+                                              {pane: 'pane_OrthophotoAugust2019_0'});
+        bounds_group.addLayer(layer_OrthophotoAugust2019_0);
+        map.addLayer(layer_OrthophotoAugust2019_0);
+        function pop_BTBAlignment_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -101,9 +100,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_BTBalignment_DD_1_0() {
+        function style_BTBAlignment_1_0() {
             return {
-                pane: 'pane_BTBalignment_DD_1',
+                pane: 'pane_BTBAlignment_1',
                 opacity: 1,
                 color: 'rgba(232,255,23,1.0)',
                 dashArray: '',
@@ -114,21 +113,21 @@
                 interactive: false,
             }
         }
-        map.createPane('pane_BTBalignment_DD_1');
-        map.getPane('pane_BTBalignment_DD_1').style.zIndex = 401;
-        map.getPane('pane_BTBalignment_DD_1').style['mix-blend-mode'] = 'normal';
-        var layer_BTBalignment_DD_1 = new L.geoJson(json_BTBalignment_DD_1, {
+        map.createPane('pane_BTBAlignment_1');
+        map.getPane('pane_BTBAlignment_1').style.zIndex = 401;
+        map.getPane('pane_BTBAlignment_1').style['mix-blend-mode'] = 'normal';
+        var layer_BTBAlignment_1 = new L.geoJson(json_BTBAlignment_1, {
             attribution: '',
             interactive: false,
-            dataVar: 'json_BTBalignment_DD_1',
-            layerName: 'layer_BTBalignment_DD_1',
-            pane: 'pane_BTBalignment_DD_1',
-            onEachFeature: pop_BTBalignment_DD_1,
-            style: style_BTBalignment_DD_1_0,
+            dataVar: 'json_BTBAlignment_1',
+            layerName: 'layer_BTBAlignment_1',
+            pane: 'pane_BTBAlignment_1',
+            onEachFeature: pop_BTBAlignment_1,
+            style: style_BTBAlignment_1_0,
         });
-        bounds_group.addLayer(layer_BTBalignment_DD_1);
-        map.addLayer(layer_BTBalignment_DD_1);
-        function pop_SitePhotos_2(feature, layer) {
+        bounds_group.addLayer(layer_BTBAlignment_1);
+        map.addLayer(layer_BTBAlignment_1);
+        function pop_SitePhotosMarch2021_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -144,16 +143,16 @@
                     <tr>\
                         <td colspan="2">' + (feature.properties['Comments'] !== null ? autolinker.link(feature.properties['Comments'].toLocaleString()) : '') + '</td>\
                     </tr>\
-					<tr>\
-                        <td colspan="2"><strong>photo1</strong><br /><img src="' + (feature.properties['photo1'] !== null ? Autolinker.link(String(feature.properties['photo1'])) : '') + '" height="400px" width="532px"/></td>\
-						</tr>\
                     <tr>\
-                        <td colspan="2"><strong>photo2</strong><br /><img src="' + (feature.properties['photo2'] !== null ? Autolinker.link(String(feature.properties['photo2'])) : '') + '" height="400px" width="532px"/></td>\
-						</tr>\
+                        <td colspan="2">' + (feature.properties['photo1'] !== null ? '<img src="images/' + String(feature.properties['photo1']).replace(/[\\\/:]/g, '_').trim() + '">' : '') + '</td>\
+                    </tr>\
                     <tr>\
-                        <td colspan="2"><strong>photo3</strong><br /><img src="' + (feature.properties['photo3'] !== null ? Autolinker.link(String(feature.properties['photo3'])) : '') + '" height="400px" width="532px"/></td>\
-						</tr>\
-					<tr>\
+                        <td colspan="2">' + (feature.properties['photo2'] !== null ? '<img src="images/' + String(feature.properties['photo2']).replace(/[\\\/:]/g, '_').trim() + '">' : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['photo3'] !== null ? '<img src="images/' + String(feature.properties['photo3']).replace(/[\\\/:]/g, '_').trim() + '">' : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <th scope="row">URL1</th>\
                         <td>' + (feature.properties['URL1'] !== null ? autolinker.link(feature.properties['URL1'].toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -169,9 +168,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_SitePhotos_2_0() {
+        function style_SitePhotosMarch2021_2_0() {
             return {
-                pane: 'pane_SitePhotos_2',
+                pane: 'pane_SitePhotosMarch2021_2',
                 shape: 'diamond',
                 radius: 8.8,
                 opacity: 1,
@@ -186,28 +185,28 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_SitePhotos_2');
-        map.getPane('pane_SitePhotos_2').style.zIndex = 402;
-        map.getPane('pane_SitePhotos_2').style['mix-blend-mode'] = 'normal';
-        var layer_SitePhotos_2 = new L.geoJson(json_SitePhotos_2, {
+        map.createPane('pane_SitePhotosMarch2021_2');
+        map.getPane('pane_SitePhotosMarch2021_2').style.zIndex = 402;
+        map.getPane('pane_SitePhotosMarch2021_2').style['mix-blend-mode'] = 'normal';
+        var layer_SitePhotosMarch2021_2 = new L.geoJson(json_SitePhotosMarch2021_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_SitePhotos_2',
-            layerName: 'layer_SitePhotos_2',
-            pane: 'pane_SitePhotos_2',
-            onEachFeature: pop_SitePhotos_2,
+            dataVar: 'json_SitePhotosMarch2021_2',
+            layerName: 'layer_SitePhotosMarch2021_2',
+            pane: 'pane_SitePhotosMarch2021_2',
+            onEachFeature: pop_SitePhotosMarch2021_2,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.shapeMarker(latlng, style_SitePhotos_2_0(feature));
+                return L.shapeMarker(latlng, style_SitePhotosMarch2021_2_0(feature));
             },
         });
-        bounds_group.addLayer(layer_SitePhotos_2);
-        map.addLayer(layer_SitePhotos_2);
+        bounds_group.addLayer(layer_SitePhotosMarch2021_2);
+        map.addLayer(layer_SitePhotosMarch2021_2);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/SitePhotos_2.png" /> SitePhotos': layer_SitePhotos_2,'<img src="legend/BTBalignment_DD_1.png" /> BTBalignment_DD': layer_BTBalignment_DD_1,"NGA_reduced_1.5m": layer_NGA_reduced_15m_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/SitePhotosMarch2021_2.png" /> Site Photos March 2021': layer_SitePhotosMarch2021_2,'<img src="legend/BTBAlignment_1.png" /> BTB Alignment': layer_BTBAlignment_1,"Orthophoto August 2019": layer_OrthophotoAugust2019_0,},{collapsed:false}).addTo(map);
         setBounds();
         L.ImageOverlay.include({
             getBounds: function () {
