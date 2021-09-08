@@ -102,14 +102,14 @@
                         <td colspan="2">' + (feature.properties['Comments'] !== null ? autolinker.link(feature.properties['Comments'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>photo1</strong><br /><img src="' + (feature.properties['photo1'] !== null ? Autolinker.link(String(feature.properties['photo1'])) : '') + '" height="200px" width="266px"/></td>\
-						</tr>\
+                        <td colspan="2"><strong>photo1</strong><br />' + (feature.properties['photo1'] !== null ? '<img src="images/' + String(feature.properties['photo1']).replace(/[\\\/:]/g, '_').trim() + '">' : '') + '</td>\
+                    </tr>\
                     <tr>\
-                        <td colspan="2"><strong>photo2</strong><br /><img src="' + (feature.properties['photo2'] !== null ? Autolinker.link(String(feature.properties['photo2'])) : '') + '" height="200px" width="266px"/></td>\
-						</tr>\
+                        <td colspan="2"><strong>photo2</strong><br />' + (feature.properties['photo2'] !== null ? '<img src="images/' + String(feature.properties['photo2']).replace(/[\\\/:]/g, '_').trim() + '">' : '') + '</td>\
+                    </tr>\
                     <tr>\
-                        <td colspan="2"><strong>photo3</strong><br /><img src="' + (feature.properties['photo3'] !== null ? Autolinker.link(String(feature.properties['photo3'])) : '') + '" height="200px" width="266px"/></td>\
-						</tr>\
+                        <td colspan="2"><strong>photo3</strong><br />' + (feature.properties['photo3'] !== null ? '<img src="images/' + String(feature.properties['photo3']).replace(/[\\\/:]/g, '_').trim() + '">' : '') + '</td>\
+                    </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
