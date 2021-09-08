@@ -153,7 +153,7 @@
                         <td colspan="2"><strong>photo3</strong><br /><img src="' + (feature.properties['photo3'] !== null ? Autolinker.link(String(feature.properties['photo3'])) : '') + '" height="400px" width="532px"/></td>\
 						</tr>\
                 </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
+            layer.bindPopup(popupContent, {maxHeight: 400}, {maxWidth: 550});
         }
 
         function style_SitePhotos_2_0() {
